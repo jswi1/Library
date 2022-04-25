@@ -2,10 +2,6 @@ import django.http
 from django.shortcuts import render, redirect, HttpResponse
 from app1.models import Kitob, Student, Muallif, Record
 
-
-def salomlash(request):
-    return render(request, "ads.html", {"ism":"Akmal"})
-
 def men(request):
     return django.http.HttpResponse("Ismim Muhammadqodir")
 

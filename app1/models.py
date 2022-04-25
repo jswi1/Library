@@ -23,7 +23,8 @@ class Kitob(models.Model):
     muallif = models.ForeignKey(Muallif,on_delete=models.CASCADE, related_name="m_kitoblari")
     def __str__(self):
         return self.nom
-
+    class Meta:
+        ordering = ("ism",)
 
 class Student(models.Model):
     ism = models.CharField(max_length=30)
@@ -32,6 +33,8 @@ class Student(models.Model):
     bitiruvchi = models.BooleanField(default=False)
     def __str__(self):
         return self.ism
+    class Meta:
+        ordering = ("nom",)
 
 
 class Record(models.Model):
@@ -71,29 +74,5 @@ class Telefon(models.Model):
     def __str__(self):
         return self.nomi
 
-
-
-class Ustoz(models.Model):
-    ism = models.CharField(max_length=30)
-    familiya = models.CharField(max_length=30)
-    daraja = models.PositiveSmallIntegerField()
-    def __str__(self):
-        return self.ism
-
-
-class Fan(models.Model):
-    nom = models.CharField(max_length=30)
-    yonalish = models.ManyToManyField('home.Ustoz',related_name='ustozlar')
-    def __str__(self):
-        return self.nom
-
-
-class Yonalish(models.Model):
-    nom = models.CharField(max_length=30)
-    code = models.PositiveSmallIntegerField()
-    start_date = models.DateField()
-    is_active = models.BooleanField()
-    def __str__(self):
-        return self.nom
 
 
